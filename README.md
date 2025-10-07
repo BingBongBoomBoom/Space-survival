@@ -12,4 +12,3 @@ Gracz steruje rakietą, która porusza się w lewo i prawo, a każda zebrana tar
 
 - **Kolizja z asteroidą** kończy grę, chyba że gracz ma aktywną tarczę lub więcej żyć.
 - Wynik punktowy rośnie wraz z unikaniem przeszkód.
-- **Power-upy** mogą dać dodatkowe punkty, ochronną tarczę lub spowolnić asteroidy.
