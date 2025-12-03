@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Survival v0.50</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="scanlines"></div>
+    
+    <div id="gameContainer">
+        <div id="menuScreen" class="menu-screen">
+            <div class="header-section">
+                <div class="corner-decoration top-left"></div>
+                <div class="corner-decoration top-right"></div>
+                
+                <h1 class="glitch" data-text="SPACE SURVIVAL">SPACE SURVIVAL</h1>
+                <div class="version">v0.50 - Alpha Build</div>
+                <div class="subtitle">█ SURVIVAL MODE █</div>
+            </div>
+            
+            <button id="toggleSkinsBtn" class="toggle-skins-btn">
+                <span class="btn-border-t"></span>
+                <span class="btn-border-r"></span>
+                <span class="btn-border-b"></span>
+                <span class="btn-border-l"></span>
+                <div class="btn-content">
+                    <span class="difficulty-name">WYBIERZ SKINA</span>
+                    <span class="difficulty-desc">Customize your rocket</span>
+                </div>
+            </button>
+            
+            <div class="skins-menu" id="skinsMenu" style="display: none;">
+                <div class="skins-title">Wybierz Skin Rakiety</div>
+                <div class="skins-preview">
+                    <canvas id="skinPreviewCanvas" width="150" height="200"></canvas>
+                </div>
+                <div class="skins-buttons">
+                    <button class="skin-btn" data-skin="classic">
+                        <span class="skin-color classic-color"></span>
+                        <span class="skin-name">KLASYCZNA</span>
+                    </button>
+                    <button class="skin-btn" data-skin="red">
+                        <span class="skin-color red-color"></span>
+                        <span class="skin-name">DYNAMICZNA</span>
+                    </button>
+                    <button class="skin-btn" data-skin="blue">
+                        <span class="skin-color blue-color"></span>
+                        <span class="skin-name">CHŁODNA</span>
+                    </button>
+                    <button class="skin-btn" data-skin="gold">
+                        <span class="skin-color gold-color"></span>
+                        <span class="skin-name">ZŁOTA</span>
+                    </button>
+                    <button class="skin-btn" data-skin="neon">
+                        <span class="skin-color neon-color"></span>
+                        <span class="skin-name">NEON</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="difficulty-menu">
+                <div class="difficulty-title">Wybierz Poziom Trudności</div>
+                <div class="difficulty-buttons">
+                    <button class="difficulty-btn easy-btn" data-difficulty="easy">
+                        <span class="btn-border-t"></span>
+                        <span class="btn-border-r"></span>
+                        <span class="btn-border-b"></span>
+                        <span class="btn-border-l"></span>
+                        <div class="btn-content">
+                            <span class="difficulty-name">ŁATWY</span>
+                            <span class="difficulty-desc">Mało asteroid</span>
+                        </div>
+                    </button>
+                    <button class="difficulty-btn normal-btn" data-difficulty="normal">
+                        <span class="btn-border-t"></span>
+                        <span class="btn-border-r"></span>
+                        <span class="btn-border-b"></span>
+                        <span class="btn-border-l"></span>
+                        <div class="btn-content">
+                            <span class="difficulty-name">NORMALNY</span>
+                            <span class="difficulty-desc">Średnia ilość asteroid</span>
+                        </div>
+                    </button>
+                    <button class="difficulty-btn hard-btn" data-difficulty="hard">
+                        <span class="btn-border-t"></span>
+                        <span class="btn-border-r"></span>
+                        <span class="btn-border-b"></span>
+                        <span class="btn-border-l"></span>
+                        <div class="btn-content">
+                            <span class="difficulty-name">TRUDNY</span>
+                            <span class="difficulty-desc">Wiele asteroid</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="corner-decoration bottom-left"></div>
+            <div class="corner-decoration bottom-right"></div>
+        </div>
+        
+        <div id="gameScreen" class="game-screen" style="display: none;">
+            <div class="header-section">
+                <div class="corner-decoration top-left"></div>
+                <div class="corner-decoration top-right"></div>
+                
+                <h1 class="glitch" data-text="SPACE SURVIVAL">SPACE SURVIVAL</h1>
+                <div class="version">v0.30 - Alpha Build</div>
+                <div class="subtitle">█ SURVIVAL MODE █</div>
+                
+                <div id="instructions" class="instructions-box">
+                    <span class="key">← →</span> / <span class="key">A</span><span class="key">D</span> - Steruj statkiem | Unikaj asteroid!
+                </div>
+            </div>
+            
+            <div id="gameHUD" class="game-hud">
+                <div class="hud-panel left-panel">
+                    <div id="scoreDisplay" class="score-display vertical">
+                        <div class="hud-stat">
+                            <span class="score-label">WYNIK:</span>
+                            <span class="score-value" id="score">0</span>
+                        </div>
+                        <div class="hud-stat">
+                            <span class="lives-label">ŻYCIA:</span>
+                            <span class="lives-value" id="lives">3</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="hudCenter" class="canvas-wrapper">
+                    <div class="canvas-border"></div>
+                    <canvas id="gameCanvas" width="800" height="600"></canvas>
+                    <div class="canvas-corner corner-tl"></div>
+                    <div class="canvas-corner corner-tr"></div>
+                    <div class="canvas-corner corner-bl"></div>
+                    <div class="canvas-corner corner-br"></div>
+                </div>
+                
+                <div class="hud-panel right-panel">
+                    <div class="hud-info">
+                        <div class="info-line">POZIOM TRUDNOŚCI</div>
+                        <div class="difficulty-indicator" id="difficultyIndicator">NORMALNY</div>
+                    </div>
+                </div>
+            </div>
+        
+        <div id="gameUI" class="game-ui">
+            <div id="gameOverContainer" class="game-over-container">
+                <div id="gameOver" class="game-over-text">GAME OVER</div>
+                <div class="game-over-subtitle">MISJA NIEUDANA</div>
+                <div id="finalScore" class="final-score"></div>
+                <button id="restartBtn" class="restart-btn">
+                    <span class="btn-border-t"></span>
+                    <span class="btn-border-r"></span>
+                    <span class="btn-border-b"></span>
+                    <span class="btn-border-l"></span>
+                    <span class="btn-text">[ POWRÓT DO MENU ]</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="corner-decoration bottom-left"></div>
+        <div class="corner-decoration bottom-right"></div>
+        </div>
+
+    <script src="js.js"></script>
+</body>
+</html>
