@@ -1,34 +1,52 @@
-## Space Survival — v1.0 Final Release (PROJOPP_AP_Final)
+# Space Survival Game
 
-Oficjalne, produkcyjne wydanie aplikacji (Wersja 1.0) realizujące pełne wytyczne projektu końcowego z przedmiotu PROJOPP.
-
----
-
-### 📑 RAPORT Z ETAPU 7: TESTOWANIE APLIKACJI (PROJOPP_AP_e7)
-
-Zgodnie z wytycznymi zaimplementowano i przeprowadzono **DWIE metody testowania** oprogramowania w celu zapewnienia stabilności wersji finalnej:
-
-#### 1. Metoda Testów Automatycznych (Jednostkowych)
-* **Opis:** Napisanie niezależnego skryptu sprawdzającego logikę biznesową gry bez udziału interfejsu graficznego.
-* **Realizacja:** Wstrzyknięto do silnika funkcję `runAutomatedTests()`. Testuje ona w izolacji warunki brzegowe gry (m.in. blokadę maksymalnej liczby żyć na poziomie 5, naliczanie punktów za bonusy oraz poprawność redukcji czasu trwania tarczy ochronnej).
-* **Wynik:** Pomyślna asercja wszystkich przypadków testowych (Status: 4/4 PASSED).
-
-#### 2. Metoda Testów Manualnych (Eksploracyjnych z użyciem Panelu Diagnostycznego)
-* **Opis:** Weryfikacja reakcji UI, skalowania trudności oraz stanów gry za pomocą deweloperskich skrótów klawiszowych.
-* **Realizacja:** Do kodu dodano ukryte mapowanie klawiszy (Cheat Menu):
-  * `H` – Wymuszenie $+100$ punktów (Weryfikacja dynamicznego wzrostu prędkości asteroid).
-  * `J` – Natychmiastowe wywołanie tarczy energetycznej (Weryfikacja nakładania filtrów graficznych Canvas).
-  * `K` – Symulacja natychmiastowej śmierci (Weryfikacja zatrzymania pętli gry i wywołania ekranu Game Over).
-* **Wynik:** Interfejs oraz pamięć lokalna (`localStorage`) poprawnie synchronizują i zapisują stany gry pod rygorem gwałtownych zmian zmiennych systemowych.
+🚀 Retro-Cyberpunkowa kosmiczna gra zręcznościowa uruchamiana bezpośrednio w przeglądarce internetowej. Przetrwaj w pasie asteroid, zbieraj ulepszenia i walcz o jak najwyższe miejsce w rankingu!
 
 ---
 
-### 📦 ZAWARTOŚĆ WYDANIA V1.0 (Etap 8):
-1. **Kod źródłowy:** Pełna, zoptymalizowana implementacja zawarta w plikach `index.html`, `js.js` oraz `style.css`.
-2. **Architektura:** Klient skryptowy niewymagający kompilacji ani zewnętrznych frameworków.
-3. **Weryfikacja działania:** Pełna integracja zapisu najlepszych wyników, filtrów graficznych CRT-scanlines oraz dynamicznej zmiany skórek statku.
+## 🎮 Jak uruchomić grę?
 
-### 🚀 INSTRUKCJA URUCHOMIENIA:
-1. Pobierz załączone poniżej pliki źródłowe (lub pobierz archiwum ZIP kodu źródłowego).
-2. Rozpakuj zawartość.
-3. Kliknij dwukrotnie plik `index.html` — gra uruchomi się natychmiast w dowolnej przeglądarce internetowej.
+Gra nie wymaga żadnej instalacji, kompilacji ani pobierania dodatkowych programów. Jest napisana w czystym JavaScript, HTML5 i CSS3.
+
+1. Pobierz pliki projektu (`index.html`, `js.js`, `style.css`).
+2. Umieść je wszystkie **w jednym wspólnym folderze**.
+3. Kliknij dwukrotnie plik **`index.html`** (otworzy się automatycznie w Twojej przeglądarce).
+
+---
+
+## 🕹️ Sterowanie
+
+* **Ruch statkiem w lewo:** Klawisz <kbd>A</kbd> lub Strzałka w lewo <kbd>←</kbd>
+* **Ruch statkiem w prawo:** Klawisz <kbd>D</kbd> lub Strzałka w prawo <kbd>→</kbd>
+
+---
+
+## 🚀 Mechanika Rozgrywki
+
+Twoim zadaniem jest unikanie nadlatujących z góry asteroid. Gra posiada 3 poziomy trudności (Easy, Medium, Hard). Im dłużej utrzymasz się przy życiu, tym szybciej poruszają się przeszkody.
+
+### Bonusy do zebrania (Power-upy):
+* 🛡️ **Tarcza (Cyanowy okrąg):** Aktywuje barierę energetyczną, która całkowicie pochłania następne uderzenie asteroidy.
+* 💎 **Punkty (Żółty diament):** Natychmiastowo zasila Twój wynik o dodatkowe **+25 punktów**.
+* ❤️ **Życie (Czerwone serce):** Regeneruje 1 punkt zdrowia (maksymalna pula żyć wynosi 5).
+
+---
+
+## 📊 System Zapisu Wyników (Leaderboard)
+
+Najlepsze wyniki są automatycznie i trwale zapisywane w pamięci podręcznej Twojej przeglądarki (`localStorage`). Ranking jest segregowany osobno dla każdego poziomu trudności, dzięki czemu możesz na bieżąco śledzić i bicie własnych rekordów.
+
+---
+
+## 🛠️ Skróty Diagnostyczne (Dla Testerów)
+
+Jeśli chcesz przetestować zachowanie silnika gry na skrajne sytuacje, użyj poniższych klawiszy na klawiaturze w trakcie lotu:
+* <kbd>H</kbd> – Dodaje $+100$ punktów (pozwala sprawdzić, jak gra przyspiesza wraz ze wzrostem wyniku).
+* <kbd>J</kbd> – Natychmiastowo wymusza odpalenie tarczy ochronnej.
+* <kbd>K</kbd> – Resetuje życia do 0 i natychmiast wywołuje ekran końca gry (Game Over).
+
+---
+
+## 📄 Licencja
+
+Projekt dystrybuowany na warunkach **Licencji MIT**. Możesz go dowolnie modyfikować, kopiować i rozwijać.
